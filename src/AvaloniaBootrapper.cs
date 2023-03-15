@@ -16,7 +16,7 @@ namespace PSAvalonia
             new CustomAssemblyLoadContext().LoadNativeLibraries();
             new CustomAssemblyLoadContext().LoadLibs();
             App = new App();
-            AppBuilder.Configure(App).UsePlatformDetect().SetupWithoutStarting();
+            AppBuilder.Configure( () => App ).UsePlatformDetect().SetupWithoutStarting();
         }
 
         public static void ForceInit()
@@ -24,9 +24,9 @@ namespace PSAvalonia
 
         }
 
-        public static Window Load(string xaml) {
-            var loader = new AvaloniaXamlLoader();
-            return (Window)loader.Load(xaml);
+        public static Window Load( string xaml ) {
+            return AvaloniaRuntimeXamlLoader.Parse<Window>( xaml );
+            // return (Window)AvaloniaXamlLoader.Load( new System.Uri( absolutepath ) );
         }
 
         public static void Start(Window window)

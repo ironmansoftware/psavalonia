@@ -12,7 +12,7 @@ namespace PSAvalonia
         public string Xaml { get; set; }
 
         protected override void ProcessRecord() {
-            var window = AvaloniaBootstrapper.Load(Xaml);
+            var window = AvaloniaBootstrapper.Load( Xaml );
             WriteObject(window);
         }
     }
