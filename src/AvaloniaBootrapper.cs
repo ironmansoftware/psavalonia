@@ -24,8 +24,9 @@ namespace PSAvalonia
 
         }
 
-        public static Window Load( string absolutepath ) {
-            return (Window)AvaloniaXamlLoader.Load( new System.Uri( absolutepath ) );
+        public static Window Load( string xaml ) {
+            return AvaloniaRuntimeXamlLoader.Parse<Window>( xaml );
+            // return (Window)AvaloniaXamlLoader.Load( new System.Uri( absolutepath ) );
         }
 
         public static void Start(Window window)
